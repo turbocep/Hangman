@@ -1,9 +1,34 @@
+%Starting game: 
+--------------------------------------------------------------------------------
 Welcome to Hangman!
+<< Enter n to start new game or l to load saved game:
+--------------------------------------------------------------------------------
+
+%New game:
+--------------------------------------------------------------------------------
+Creating new game
 Combobulating guess word...
 Guess word combobulated!
+--------------------------------------------------------------------------------
 
-Letters guessed:
-7 wrong guesses left.
+%Load game:
+--------------------------------------------------------------------------------
+Saved Games:
+Index   Saved name
+  1  => Save name
+  2  => Save name 2
+
+You can make up to 10 saves.
+Save names need to be 20 characters or less.
+>> Enter the index of the save you'd like to load:
+
+--------------------------------------------------------------------------------
+
+%Playing screen:
+--------------------------------------------------------------------------------
+Feedback ["Nice guess!", "Wrong guess", "New game started"]
+Letters tried:
+Guesses left:
 
 
 
@@ -18,7 +43,6 @@ Letters guessed:
 ______|______
 Guess word: ____________
 Enter guess letter or "quit" to quit game:
-...
+--------------------------------------------------------------------------------
 
-I can write these in terms of prompt positions and then output them. I'll figure
-it out with time. 
+

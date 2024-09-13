@@ -10,7 +10,7 @@ The progressive hangman graphics are found in *hangman_graphics.txt*.
 
 Samples of the UI design can be found in *ui_design.txt*.
 
-
+That's enough for today. Finsih ui_design.txt and then move-on.
 
 
 
