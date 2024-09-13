@@ -1,0 +1,24 @@
+Welcome to Hangman!
+Combobulating guess word...
+Guess word combobulated!
+
+Letters guessed:
+7 wrong guesses left.
+
+
+
+
+
+
+
+
+
+
+
+______|______
+Guess word: ____________
+Enter guess letter or "quit" to quit game:
+...
+
+I can write these in terms of prompt positions and then output them. I'll figure
+it out with time. 
