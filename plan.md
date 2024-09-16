@@ -10,8 +10,26 @@ The progressive hangman graphics are found in *hangman_graphics.txt*.
 
 Samples of the UI design can be found in *ui_design.txt*.
 
-That's enough for today. Finsih ui_design.txt and then move-on.
+That's enough for today. Finish ui_design.txt and then move-on.
 
+### Inputs
+1. Guess Word from file
+2. User input
+3. Save game
+
+### Outputs
+
+### Steps
+#### Filtered Text File
+The text file can be filtered based on word length. Include min and max word length as parameters for the method.
+Mind escape characters when counting string length. Test. 
+Pseudocode
+* Read word list
+* Read each line
+* Better to store words to array then write all to text file, or update text file every iteration? Prob store to array.
+* Push to array if it passes filter
+* Return within method
+* Generate new text file outside of method. Simplify!
 
 
 
