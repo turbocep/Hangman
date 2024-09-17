@@ -5,9 +5,8 @@
 
 #Getting random guess word
 file_path = 'guess_words.txt'
-#GUESS_WORD = File.readlines(file_path).map(&:chomp).sample
+GUESS_WORD = File.readlines(file_path).map(&:chomp).sample
 
-GUESS_WORD = "welcome"
 tried_letters = []
 
 
