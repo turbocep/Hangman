@@ -18,5 +18,3 @@ filtered_words = filter_by_length(file_path, min_length, max_length)
 File.open('guess_words.txt', 'w') do |f|
   filtered_words.each {|word| f.write(word + "\n")}
 end
-
-
