@@ -18,6 +18,7 @@ That's enough for today. Finish ui_design.txt and then move-on.
 3. Save game
 
 ### Outputs
+1. UI Messages and game feedback
 
 ### Steps
 #### Filtered Text File
@@ -30,8 +31,15 @@ Pseudocode
 * Push to array if it passes filter
 * Return within method
 * Generate new text file outside of method. Simplify!
+#### Getting random guess word
+1. Read guess_words.txt into Array
+2. Sample guess word from it.
 
-
+#### Playing Game
+Classes:
+* Game
+* Word (composite of Game)
+* UI
 
 
 Ideas:
