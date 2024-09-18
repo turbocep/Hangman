@@ -1,11 +1,10 @@
-#Components of Game:
-#Guess word
-#Letters tried
-#Guesses left
+
 
 #Getting random guess word
-file_path = 'guess_words.txt'
-GUESS_WORD = File.readlines(file_path).map(&:chomp).sample
+def get_random_word()
+  file_path = 'guess_words.txt'
+  GUESS_WORD = File.readlines(file_path).map(&:chomp).sample
+end
 
 #Obstruct guess word for player based on their guessed letters.
 def obstruct_guess_word(guess_word, tried_letters)
@@ -18,6 +17,46 @@ def obstruct_guess_word(guess_word, tried_letters)
   end.join(" ")
 end
 
+#Variables
+user_input = ''
+round = 0
+letters_tired = []
+wrong_guesses_left = 7
+
+#Welcome Screen
+puts "Welcome to Hangman!"
+loop do
+  puts "<< Enter 'n' to start new game or 'l' to load a saved game:"
+  user_input = gets.downcase.chomp
+  break if ['n', 'l'].include?(user_input)
+  puts "Invalid input. Try again."
+end
+
+if user_input == 'n'
+  puts 'Creating new game'
+  begin
+    puts 'Combobulating guess word.'
+    GUESS_WORD = get_random_word()
+  rescue
+    puts 'Something went wrong. Trying again.'
+    retry
+  end
+  puts 'Guess word combobulated!'
+elsif user_input == 'l'
+  puts "Saved Games:"
+  puts 'Index   Save name'
+  #List the saves. Store as hashes. Save index, save name and the saved variables. 
+else
+  puts "Something went wrong."
+end
+
+
+
+
+
+
+
+#Paths
 letters_tried = []
 wrong_guesses_left = 7
 round = 0
@@ -30,13 +69,20 @@ loop do
   if round == 0
     puts "New game started!"
   end
+  puts GUESS_WORD
   puts "Letters tried: #{letters_tried.join(" ")}"
   puts "Wrong guesses left: #{wrong_guesses_left}"
   puts 'ERROR. Insufficient budget for hangman graphics support. Get a job!'
-  puts "Guess word: #{obstruct_guess_word(GUESS_WORD, letters_tried)}"
+  obstructed_word = obstruct_guess_word(GUESS_WORD, letters_tried)
+  puts "Guess word: #{obstructed_word}"
+  if obstructed_word.split(" ").join == GUESS_WORD
+    puts "Game over. You won!"
+    break
+  end
   puts "Enter guess letter or 'quit' to quit game:"
   guess = gets.chomp
   letters_tried.push(guess)
+  
 end
 
 
