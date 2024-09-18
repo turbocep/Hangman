@@ -3,12 +3,12 @@
 #Getting random guess word
 def get_random_word()
   file_path = 'guess_words.txt'
-  GUESS_WORD = File.readlines(file_path).map(&:chomp).sample
+  File.readlines(file_path).map(&:chomp).sample
 end
 
 #Obstruct guess word for player based on their guessed letters.
 def obstruct_guess_word(guess_word, tried_letters)
-  GUESS_WORD.split("").map do |letter|
+  guess_word.split("").map do |letter|
     if tried_letters.include?(letter)
       letter
     else
@@ -22,6 +22,13 @@ user_input = ''
 round = 0
 letters_tired = []
 wrong_guesses_left = 7
+guess_word = ""
+game_saves = {
+  save1: {round: 0, letters_tried: [], wrong_guesses_left: 7},
+  save2: {round: 3, letters_tried: ['a', 'b', 'c'], wrong_guesses_left: 6}
+}
+
+
 
 #Welcome Screen
 puts "Welcome to Hangman!"
@@ -36,7 +43,7 @@ if user_input == 'n'
   puts 'Creating new game'
   begin
     puts 'Combobulating guess word.'
-    GUESS_WORD = get_random_word()
+    guess_word = get_random_word()
   rescue
     puts 'Something went wrong. Trying again.'
     retry
@@ -45,7 +52,8 @@ if user_input == 'n'
 elsif user_input == 'l'
   puts "Saved Games:"
   puts 'Index   Save name'
-  #List the saves. Store as hashes. Save index, save name and the saved variables. 
+  #List the saves. Store as hashes in JSON file. Save index, save name and the saved variables. 
+
 else
   puts "Something went wrong."
 end
@@ -69,13 +77,13 @@ loop do
   if round == 0
     puts "New game started!"
   end
-  puts GUESS_WORD
+  puts guess_word
   puts "Letters tried: #{letters_tried.join(" ")}"
   puts "Wrong guesses left: #{wrong_guesses_left}"
   puts 'ERROR. Insufficient budget for hangman graphics support. Get a job!'
-  obstructed_word = obstruct_guess_word(GUESS_WORD, letters_tried)
+  obstructed_word = obstruct_guess_word(guess_word, letters_tried)
   puts "Guess word: #{obstructed_word}"
-  if obstructed_word.split(" ").join == GUESS_WORD
+  if obstructed_word.split(" ").join == guess_word
     puts "Game over. You won!"
     break
   end
