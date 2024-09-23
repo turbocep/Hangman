@@ -72,15 +72,20 @@ elsif user_input == 'l'
     puts "Invalid input. Try again."
   end
   if user_input == 'd'
+    #Delete selected save
     game_saves.delete(selected_file)
+    #Write saves file with save array excluding deleted save
     File.write(save_path, JSON.dump(game_saves))
   elsif user_input == 'l'
     #Load the new game now.
     #Need a way to read each variable into the game properly.
-    loaded_game = selected_file
     #Assign each loaded game value to each variable here.
+    round = selected_file["round"]
+    letters_tried = selected_file["letters_checked"]
+    wrong_guesses_left = selected_file["wrong_guesses_left"]
+    guess_word = selected_file["guess_word"]
   end
-
+  #This shouldn't just start a new game. Later problem.
 else
   puts "Something went wrong."
 end
