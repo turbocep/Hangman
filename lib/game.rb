@@ -1,4 +1,4 @@
-
+require 'json'
 
 #Getting random guess word
 def get_random_word()
@@ -20,13 +20,11 @@ end
 #Variables
 user_input = ''
 round = 0
-letters_tired = []
+letters_tried = []
 wrong_guesses_left = 7
 guess_word = ""
-game_saves = {
-  save1: {round: 0, letters_tried: [], wrong_guesses_left: 7},
-  save2: {round: 3, letters_tried: ['a', 'b', 'c'], wrong_guesses_left: 6}
-}
+game_saves = JSON.parse(File.read('./saves.json'))
+puts game_saves
 
 
 
@@ -51,8 +49,31 @@ if user_input == 'n'
   puts 'Guess word combobulated!'
 elsif user_input == 'l'
   puts "Saved Games:"
+  #Load saved games.
   puts 'Index   Save name'
-  #List the saves. Store as hashes in JSON file. Save index, save name and the saved variables. 
+  game_saves.each_with_index do |game, index|
+    puts "  #{index + 1}  => #{game_saves[index][:name]}"
+  end
+  puts "#{game_saves.length}/10 saves made"
+  puts '>> Select a save by entering its index:'
+  loop do
+    user_input = gets.chomp.to_i
+    break if user_input > 0 && user_input <= game_saves.length
+    puts "Invalid input. Try again."
+  end
+  #Save Selected
+  selected_file = game_saves[user_input - 1]
+  puts '>> Enter l to load or d to delete this save'
+  loop do
+    user_input = gets.chomp.downcase
+    break if ['d', 'l'].include?(user_input)
+    puts "Invalid input. Try again."
+  end
+  if user_input == 'd'
+    #How do I delete the file from serialization?
+  elsif user_input == 'l'
+    #Load the new game now.
+  end
 
 else
   puts "Something went wrong."
