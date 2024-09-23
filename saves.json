@@ -1,12 +1,13 @@
-{
-    "name":"save 1",
-    "round":0,
-    "letters_tried":[
-      
-    ],
-    "wrong_guesses_left":7,
-    "guess_word":"chocolate"
-}
-
+[
+  {
+     "name":"save 1",
+     "round":0,
+     "letters_tried":[
+        
+     ],
+     "wrong_guesses_left":7,
+     "guess_word":"chocolate"
+  }
+]
 
 

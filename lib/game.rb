@@ -24,7 +24,8 @@ letters_tried = []
 wrong_guesses_left = 7
 guess_word = ""
 game_saves = JSON.parse(File.read('./saves.json'))
-puts game_saves
+
+
 
 
 
@@ -52,7 +53,7 @@ elsif user_input == 'l'
   #Load saved games.
   puts 'Index   Save name'
   game_saves.each_with_index do |game, index|
-    puts "  #{index + 1}  => #{game_saves[index][:name]}"
+    puts "  #{index + 1}  => #{game["name"]}"
   end
   puts "#{game_saves.length}/10 saves made"
   puts '>> Select a save by entering its index:'
