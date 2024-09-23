@@ -7,7 +7,25 @@
      ],
      "wrong_guesses_left":7,
      "guess_word":"chocolate"
-  }
+  },
+  {
+    "name":"save 2",
+    "round":1,
+    "letters_tried":[
+       "n"
+    ],
+    "wrong_guesses_left":6,
+    "guess_word":"chocolate"
+ },
+ {
+  "name":"save 3",
+  "round":1,
+  "letters_tried":[
+     "n"
+  ],
+  "wrong_guesses_left":6,
+  "guess_word":"chocolate"
+}
 ]
 
 

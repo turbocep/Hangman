@@ -24,7 +24,7 @@ letters_tried = []
 wrong_guesses_left = 7
 guess_word = ""
 game_saves = JSON.parse(File.read('./saves.json'))
-
+p game_saves
 
 
 
@@ -71,9 +71,11 @@ elsif user_input == 'l'
     puts "Invalid input. Try again."
   end
   if user_input == 'd'
-    #How do I delete the file from serialization?
+    game_saves.delete(selected_file)
+    #No updating JSON here.
   elsif user_input == 'l'
     #Load the new game now.
+    #Need a way to read each variable into the game properly.
   end
 
 else
