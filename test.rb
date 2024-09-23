@@ -2,6 +2,9 @@
 puts require 'json'
 
 file1 = File.read('./saves.json')
-p file1
 file = JSON.parse(file1)
 p file
+file.delete_at(0)
+p file
+File.write('./saves.json', JSON.dump(file))
+

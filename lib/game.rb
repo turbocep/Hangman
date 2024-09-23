@@ -23,8 +23,9 @@ round = 0
 letters_tried = []
 wrong_guesses_left = 7
 guess_word = ""
-game_saves = JSON.parse(File.read('./saves.json'))
-p game_saves
+save_path = './saves.json'
+game_saves = JSON.parse(File.read(save_path))
+
 
 
 
@@ -72,10 +73,12 @@ elsif user_input == 'l'
   end
   if user_input == 'd'
     game_saves.delete(selected_file)
-    #No updating JSON here.
+    File.write(save_path, JSON.dump(game_saves))
   elsif user_input == 'l'
     #Load the new game now.
     #Need a way to read each variable into the game properly.
+    loaded_game = selected_file
+    #Assign each loaded game value to each variable here.
   end
 
 else
