@@ -136,6 +136,7 @@ loop do
       puts "Invalid input"
     else
       letters_tried.push(guess)
+      round += 1
       wrong_guesses_left -= 1 unless guess_word.include?(guess)
       break
     end
