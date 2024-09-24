@@ -17,6 +17,16 @@ def obstruct_guess_word(guess_word, tried_letters)
   end.join(" ")
 end
 
+def create_save_hash(name, round, letters_tried, wrong_guesses_left, guess_word)
+  {
+     "name": name,
+     "round": round,
+     "letters_tried": letters_tried,
+     "wrong_guesses_left": wrong_guesses_left,
+     "guess_word": guess_word
+  }
+end
+
 #Variables
 user_input = ''
 round = 0
@@ -113,7 +123,6 @@ loop do
     guess = gets.chomp.downcase
     if guess == "quit"
       puts "Quitting game"
-      exit = true
       break
     elsif letters_tried.include?(guess)
       puts "You've already tried this letter. Try a different one."
@@ -123,10 +132,39 @@ loop do
       puts "Invalid input"
     else
       letters_tried.push(guess)
+      round += 1 if guess_word.include?(guess)
       break
     end
   end
-  break if exit
+  if guess == "quit"
+    loop do
+      puts ">> Enter 's' to save this game or 'e' to exit immediately:"
+      user_input = gets.chomp.downcase
+      #How do I make more concise/better user-input loops?
+      if user_input == "e"
+        break
+      elsif user_input == "s"
+        loop do
+          puts ">> Enter a save name that is between 5 and 20 characters long:"
+          user_input = gets.chomp.downcase
+          #Save
+          if user_input.length >= 5 && user_input.length <= 20
+            game_saves.push(create_save_hash(
+              user_input, 
+              round, 
+              letters_tried, 
+              wrong_guesses_left, 
+              guess_word)
+              )
+            #Overwrites game save.
+            File.write(save_path, JSON.dump(game_saves))
+            puts "Game saved as '#{user_input}'"
+            break
+          end
+          puts "Something went wrong. Try again."
+        end
+      end
+  end
 end
 
 
