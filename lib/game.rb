@@ -37,6 +37,13 @@ save_path = './saves.json'
 game_saves = JSON.parse(File.read(save_path))
 guess = ""
 
+#Getting Hangman Graphics
+graphics_path = './hangman_graphics.txt'
+graphics_file = File.readlines(graphics_path)
+new_graphics_file = graphics_file.join.split("Turn\n")
+new_graphics_file.shift
+
+
 
 puts "Welcome to Hangman!"
 #Menu Loop
@@ -112,7 +119,7 @@ loop do
   letters_tried_formatted = letters_tried.nil? ? "" : letters_tried.join(" ")
   puts "Letters tried: #{letters_tried_formatted}"
   puts "Wrong guesses left: #{wrong_guesses_left}"
-  puts "\n\n\n\n\n\n\n\n\n\n\n\n"
+  puts new_graphics_file[round]
   obstructed_word = obstruct_guess_word(guess_word, letters_tried)
   puts "Guess word: #{obstructed_word}"
   if obstructed_word.split(" ").join == guess_word
