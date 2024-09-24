@@ -46,6 +46,18 @@ Ideas:
   * Create a program that filters the world txt document for only-valid words, so fetching them is faster. No, no need actually, because we only need one word from all of them. Still, it'd be cool to create a text file with only those words. Little bonus task that I'm happy to do. 
   * UI step: Actually plan what your UI should look like in the terminal. Plan exactly what it says and how it's formatted. Styling is cool if you do it right. 
 
+Potential Improvements:
+  * Use OOP best practice.
+  * Enable renaming save files.
+  * Overwrite saves with the same name.
+  * Enable ability to move backwards through menus.
+  * Optimize storage of graphics.
+  * Sound effects.
+  * Menu for sound effects and difficulty.
+  * Difficulty based on commonality of words.
+  * Save settings in a config file.
+
+
 
 
 
