@@ -164,6 +164,7 @@ loop do
           puts "Something went wrong. Try again."
         end
       end
+    end
   end
 end
 
