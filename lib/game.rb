@@ -35,6 +35,7 @@ wrong_guesses_left = 7
 guess_word = ""
 save_path = './saves.json'
 game_saves = JSON.parse(File.read(save_path))
+guess = ""
 
 
 puts "Welcome to Hangman!"
@@ -117,6 +118,9 @@ loop do
   if obstructed_word.split(" ").join == guess_word
     puts "Game over. You won!"
     break
+  elsif wrong_guesses_left == 0
+    puts "You've lost!"
+    break
   end
   loop do
     puts "Enter guess letter or 'quit' to quit game:"
@@ -132,7 +136,7 @@ loop do
       puts "Invalid input"
     else
       letters_tried.push(guess)
-      round += 1 if guess_word.include?(guess)
+      wrong_guesses_left -= 1 unless guess_word.include?(guess)
       break
     end
   end
@@ -142,6 +146,7 @@ loop do
       user_input = gets.chomp.downcase
       #How do I make more concise/better user-input loops?
       if user_input == "e"
+        puts "Game exited."
         break
       elsif user_input == "s"
         loop do
@@ -164,7 +169,9 @@ loop do
           puts "Something went wrong. Try again."
         end
       end
+      break
     end
+    break
   end
 end
 
