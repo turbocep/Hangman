@@ -119,7 +119,7 @@ loop do
   letters_tried_formatted = letters_tried.nil? ? "" : letters_tried.join(" ")
   puts "Letters tried: #{letters_tried_formatted}"
   puts "Wrong guesses left: #{wrong_guesses_left}"
-  puts new_graphics_file[round]
+  puts new_graphics_file[7 - wrong_guesses_left]
   obstructed_word = obstruct_guess_word(guess_word, letters_tried)
   puts "Guess word: #{obstructed_word}"
   if obstructed_word.split(" ").join == guess_word
