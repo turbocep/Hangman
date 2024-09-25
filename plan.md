@@ -57,6 +57,9 @@ Potential Improvements:
   * Difficulty based on commonality of words.
   * Save settings in a config file.
 
+  Initial project complete 20240925.
+  
+
 
 
 
