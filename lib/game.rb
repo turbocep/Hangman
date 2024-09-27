@@ -34,7 +34,11 @@ letters_tried = []
 wrong_guesses_left = 7
 guess_word = ""
 save_path = './saves.json'
-game_saves = JSON.parse(File.read(save_path))
+begin
+  game_saves = JSON.parse(File.read(save_path))
+rescue
+  game_saves = []
+end
 guess = ""
 
 #Getting Hangman Graphics
